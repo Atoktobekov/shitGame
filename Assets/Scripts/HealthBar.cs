@@ -10,12 +10,12 @@ public class HealthBar : MonoBehaviour
 
    private void Start()
    {
-      setMaxHealth(playerHealth.maxHealth);
+     // setMaxHealth(playerHealth.maxHealth);
    }
 
    private void Update()
    {
-      setHealth(playerHealth.health);
+      //setHealth(playerHealth.health);
    }
 
    public void setMaxHealth(int health)

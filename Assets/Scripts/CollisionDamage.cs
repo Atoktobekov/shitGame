@@ -5,17 +5,33 @@ using UnityEngine;
 
 public class CollisionDamage : MonoBehaviour
 {
-    public int collisionDamage = 10;
-
     public string collisiontag;
+    public float bounceForce = 5f;
+    public BoxCollider2D headCollider;
+    public Health monsterHealth;
+    
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == collisiontag)
         {
-            Health health = coll.gameObject.GetComponent<Health>();
-            health.takeHit(collisionDamage);
+            PlayerControllerr player = coll.gameObject.GetComponent<PlayerControllerr>();
+            Health playerHealth = coll.gameObject.GetComponent<Health>();
+
+            if (player != null)
+            {
+                if (headCollider.bounds.Contains(coll.transform.position))
+                {
+                    monsterHealth.takeLive();
+                    player.Bounce(bounceForce);
+                }
+                else
+                {
+                    playerHealth.takeLive();
+                }
+            }
         }
         
     }
+    
 }

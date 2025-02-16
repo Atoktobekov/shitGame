@@ -78,8 +78,16 @@ public class PlayerControllerr : MonoBehaviour
         {
             rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
             animator.SetBool("isJumping", true);
-
+            
         } 
+    }
+    public void Bounce(float force)
+    {
+        if (rb != null)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0); // Сброс скорости по вертикали
+            rb.AddForce(Vector2.up * force, ForceMode2D.Impulse); // Применяем импульс вверх
+        }
     }
 
     private void checkGround()

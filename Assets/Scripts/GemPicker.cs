@@ -9,11 +9,6 @@ public class GemPicker : MonoBehaviour
     private Animator anim;
     private int gems = 0;
     public TMP_Text gemsText;
-    void Start()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Gem")
@@ -22,11 +17,5 @@ public class GemPicker : MonoBehaviour
             gemsText.text = gems.ToString();
             Destroy(coll.gameObject);
         }
-    }
-
-    
-    void Update()
-    {
-        
     }
 }

@@ -1,30 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using TMPro;
+using Unity.VisualScripting;
 
 public class Health : MonoBehaviour
 {
-   public int health;
-   public int maxHealth;
 
-   public void takeHit(int damage)
+   public int lives = 90;
+   public TMP_Text livesText;
+   
+   private void Update()
    {
-      health -= damage;
-
-      if (health < 0)
+      livesText.text = lives.ToString();
+   }
+   public void takeLive()
+   {
+      lives--;
+      if (lives <= 0)
       {
          Destroy(gameObject);
-      }  
-   }
-
-   public void setHealth(int bonusHealth)
-   {
-      health += bonusHealth;
-
-      if (health > maxHealth)
-      {
-         health = maxHealth;
       }
    }
+
+   public void plusLive()
+   {
+      lives++;
+   }
+
+  
+   
 }
