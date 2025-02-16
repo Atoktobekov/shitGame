@@ -1,24 +1,21 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
+
 using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
 
-public class Health : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
-
-   public int lives = 90;
+   public int lives = 1;
    public TMP_Text livesText;
    
-   private void Update()
+   void Start()
    {
       livesText.text = lives.ToString();
    }
    public void takeLive()
    {
       lives--;
+      livesText.text = lives.ToString();
+
       if (lives <= 0)
       {
          Destroy(gameObject);
@@ -28,6 +25,8 @@ public class Health : MonoBehaviour
    public void plusLive()
    {
       lives++;
+      livesText.text = lives.ToString();
+
    }
 
   

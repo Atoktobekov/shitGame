@@ -1,14 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Serialization;
-using Range = UnityEngine.SocialPlatforms.Range;
+
 
 public class PlayerControllerr : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private float horizontalMove = 0f;
+    private float horizontalMove;
     private bool facingRight = true;
     private Animator animator;
 
@@ -42,6 +40,7 @@ public class PlayerControllerr : MonoBehaviour
         {
             animator.SetBool("isJumping", false);
         }
+        
     }
     private void FixedUpdate()
     {
@@ -57,9 +56,7 @@ public class PlayerControllerr : MonoBehaviour
     }
     private void UpdateAnimator()
     {
-        animator.SetFloat("velocityX", Mathf.Abs(rb.velocity.x));
         animator.SetFloat("velocityY", rb.velocity.y);
-
         animator.SetBool("isJumping", !isGrounded); 
         animator.SetBool("isRunning", isGrounded && Mathf.Abs(rb.velocity.x) > 0.07f);
     }
@@ -78,7 +75,6 @@ public class PlayerControllerr : MonoBehaviour
         {
             rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
             animator.SetBool("isJumping", true);
-            
         } 
     }
     public void Bounce(float force)
@@ -103,5 +99,16 @@ public class PlayerControllerr : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red; // Цвет круга
+
+        // Позиция проверки земли
+        Vector2 groundCheckPos = new Vector2(transform.position.x, transform.position.y + checkGroundOffSetY);
+
+        // Рисуем круг, соответствующий checkGroundRadius
+        Gizmos.DrawWireSphere(groundCheckPos, checkGroundRadius);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class CollisionHeal : MonoBehaviour
 {
     public string collisiontag;
     
@@ -11,7 +11,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (coll.gameObject.tag == collisiontag)
         {
-            Health health = coll.gameObject.GetComponent<Health>();
+            PlayerHealth health = coll.gameObject.GetComponent<PlayerHealth>();
             health.plusLive();
             Destroy(gameObject);
         }
