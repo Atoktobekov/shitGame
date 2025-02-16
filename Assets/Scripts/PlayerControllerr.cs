@@ -9,6 +9,8 @@ public class PlayerControllerr : MonoBehaviour
     private float horizontalMove;
     private bool facingRight = true;
     private Animator animator;
+    public int extraJumps = 1;
+    private int jumpCount = 0;
 
     [Header("Player Movement Settings")] 
     [Range(5, 25f)] public float jumpForce;
@@ -73,11 +75,18 @@ public class PlayerControllerr : MonoBehaviour
 
     private void Jump()
     {
-        if (isGrounded && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
+        if (isGrounded)
         {
-            rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+            jumpCount = 0;
+        }
+        if ((isGrounded || jumpCount<extraJumps)
+            && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Устанавливаем вертикальную скорость
+            jumpCount++;
             animator.SetBool("isJumping", true);
-        } 
+        }
+
     }
     public void Bounce(float force)
     {
