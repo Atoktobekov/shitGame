@@ -40,6 +40,7 @@ public class PlayerControllerr : MonoBehaviour
         {
             animator.SetBool("isJumping", false);
         }
+       
         
     }
     private void FixedUpdate()
@@ -58,6 +59,7 @@ public class PlayerControllerr : MonoBehaviour
     {
         animator.SetFloat("velocityY", rb.velocity.y);
         animator.SetBool("isJumping", !isGrounded); 
+        animator.SetBool("isGrounded", isGrounded); 
         animator.SetBool("isRunning", isGrounded && Mathf.Abs(rb.velocity.x) > 0.07f);
     }
 
