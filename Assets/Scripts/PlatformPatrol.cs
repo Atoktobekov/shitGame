@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlatformPatrol : MonoBehaviour
 {
@@ -12,10 +9,7 @@ public class PlatformPatrol : MonoBehaviour
     private bool movingLeft = true;
 
     public Transform groundDetection;
-    void Start()
-    {
-    }
-
+    
     void Update()
     {
         transform.Translate(Vector3.left * speed * Time.deltaTime);

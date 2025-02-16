@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -6,11 +7,19 @@ using UnityEngine.Serialization;
 public class PlayerControllerr : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private Rigidbody2D platformRb;
+    
     private float horizontalMove;
     private bool facingRight = true;
+    
     private Animator animator;
+    
     public int extraJumps = 1;
     private int jumpCount = 0;
+    
+    private PlatformMoving platform;
+    private bool isOnPlatform = false;
+    
 
     [Header("Player Movement Settings")] 
     [Range(5, 25f)] public float jumpForce;
@@ -19,7 +28,7 @@ public class PlayerControllerr : MonoBehaviour
     [Space] [Header("Ground Checker Settings")]
     public bool isGrounded = false;
     [Range(-5f,5f)] public float checkGroundOffSetY = -1.8f;
-    [FormerlySerializedAs("checkGroundRadius")] [Range(0, 5f)] public float checkGroundRadius = 0.3f;
+    [Range(0, 5f)] public float checkGroundRadius = 0.3f;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -51,7 +60,27 @@ public class PlayerControllerr : MonoBehaviour
         checkGround();
         UpdateAnimator();
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            // Проверяем, что игрок касается платформы сверху
+            if (collision.contacts[0].normal.y > 0)
+            {
+                transform.SetParent(collision.transform); // Делаем платформу родителем
+            }
+        }
+    }
+  
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            transform.SetParent(null); // Убираем родителя при уходе с платформы
+        }
+    }
+
     private void Move()
     {
         Vector2 targetVelocity = new Vector2(horizontalMove * 5f, rb.velocity.y);
