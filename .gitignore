@@ -1,0 +1,12 @@
+# Игнорируем библиотеки и временные файлы
+Library/
+Logs/
+Temp/
+Obj/
+.vs/
+.vscode/
+.idea/
+Build/
+Builds/
+UserSettings/
+
