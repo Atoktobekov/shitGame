@@ -138,6 +138,7 @@ public class PlayerControllerr : MonoBehaviour
     {
         if (rb != null)
         {
+            animator.SetTrigger("Hit");
             rb.velocity = new Vector2(vec.x * force, rb.velocity.y);
             StartCoroutine(KnockbackCoroutine(0.2f));
 
