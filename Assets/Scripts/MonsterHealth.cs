@@ -7,7 +7,7 @@ public class MonsterHealth : MonoBehaviour
 {
     public string collisiontag;
     public float bounceForce = 5f;
-    public BoxCollider2D headCollider;
+    private float knockbackForce = 9.35f;
     public int monsterLives = 1;
     public float positionYadding = 1f;
     private void OnCollisionEnter2D(Collision2D coll)
@@ -29,7 +29,9 @@ public class MonsterHealth : MonoBehaviour
             }
             else
             {
+                    Vector2 knockbackDir = (transform.position.x > coll.transform.position.x) ? Vector2.left : Vector2.right;
                     playerHealth.takeLive();
+                   player.gotDamageFromEnemy(knockbackDir, knockbackForce);
             }
         }
     }

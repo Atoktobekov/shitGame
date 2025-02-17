@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -10,6 +11,7 @@ public class PlayerControllerr : MonoBehaviour
     
     private float horizontalMove;
     private bool facingRight = true;
+    private bool canMove = true;
     
     private Animator animator;
     
@@ -67,17 +69,28 @@ public class PlayerControllerr : MonoBehaviour
             }
         }
     }
-  
-    private void OnCollisionExit2D(Collision2D collision)
+  //old function
+    /*private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("MovingPlatform"))
         {
             transform.SetParent(null); // Убираем родителя при уходе с платформы
         }
+    }*/
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            if (gameObject.activeInHierarchy) // Проверяем, активен ли объект перед сменой родителя
+            {
+                transform.SetParent(null);
+            }
+        }
     }
 
     private void Move()
     {
+        if (!canMove) return;
         Vector2 targetVelocity = new Vector2(horizontalMove * 5f, rb.velocity.y);
         rb.velocity = targetVelocity;
     }
@@ -121,6 +134,17 @@ public class PlayerControllerr : MonoBehaviour
         }
     }
 
+    public void gotDamageFromEnemy(Vector2 vec, float force)
+    {
+        if (rb != null)
+        {
+            rb.velocity = new Vector2(vec.x * force, rb.velocity.y);
+            StartCoroutine(KnockbackCoroutine(0.2f));
+
+        }
+        
+    }
+
     private void checkGround()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll
@@ -146,4 +170,12 @@ public class PlayerControllerr : MonoBehaviour
         // Рисуем круг, соответствующий checkGroundRadius
         Gizmos.DrawWireSphere(groundCheckPos, checkGroundRadius);
     }
+    
+    IEnumerator KnockbackCoroutine(float duration)
+    {
+        canMove = false; // Отключаем управление
+        yield return new WaitForSeconds(duration);
+        canMove = true; // Включаем обратно
+    }
+
 }
