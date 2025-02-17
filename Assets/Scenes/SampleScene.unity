@@ -2256,7 +2256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extraJumps: 1
-  jumpForce: 16.27
+  jumpForce: 14.8
   speed: 1.81
   isGrounded: 0
   checkGroundOffSetY: -1.54

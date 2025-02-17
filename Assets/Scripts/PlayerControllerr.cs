@@ -7,7 +7,6 @@ using UnityEngine.Serialization;
 public class PlayerControllerr : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private Rigidbody2D platformRb;
     
     private float horizontalMove;
     private bool facingRight = true;
@@ -16,10 +15,6 @@ public class PlayerControllerr : MonoBehaviour
     
     public int extraJumps = 1;
     private int jumpCount = 0;
-    
-    private PlatformMoving platform;
-    private bool isOnPlatform = false;
-    
 
     [Header("Player Movement Settings")] 
     [Range(5, 25f)] public float jumpForce;
