@@ -31,7 +31,7 @@ public class MonsterHealth : MonoBehaviour
             {
                     Vector2 knockbackDir = (transform.position.x > coll.transform.position.x) ? Vector2.left : Vector2.right;
                     playerHealth.takeLive();
-                   player.gotDamageFromEnemy(knockbackDir, knockbackForce);
+                   player.getDamageFromEnemy(knockbackDir, knockbackForce);
             }
         }
     }

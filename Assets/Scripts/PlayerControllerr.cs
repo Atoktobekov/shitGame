@@ -134,7 +134,7 @@ public class PlayerControllerr : MonoBehaviour
         }
     }
 
-    public void gotDamageFromEnemy(Vector2 vec, float force)
+    public void getDamageFromEnemy(Vector2 vec, float force)
     {
         if (rb != null)
         {
@@ -143,7 +143,17 @@ public class PlayerControllerr : MonoBehaviour
             StartCoroutine(KnockbackCoroutine(0.2f));
 
         }
-        
+    }
+
+    public void getDamageFromSpikes(Vector2 vector2, float force)
+    {
+        if (rb != null)
+        {
+            animator.SetTrigger("Hit");
+            rb.velocity = new Vector2(vector2.x * force, vector2.y * force);
+            StartCoroutine(KnockbackCoroutine(0.2f));
+
+        }
     }
 
     private void checkGround()
