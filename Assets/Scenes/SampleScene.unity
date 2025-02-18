@@ -5215,6 +5215,14 @@ PrefabInstance:
       propertyPath: knockbackForce
       value: 9.31
       objectReference: {fileID: 0}
+    - target: {fileID: 4304131770378079595, guid: 73c14e8d45e4e9144b37c84dda284101, type: 3}
+      propertyPath: m_Size.x
+      value: 0.18795331
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304131770378079595, guid: 73c14e8d45e4e9144b37c84dda284101, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.020343639
+      objectReference: {fileID: 0}
     - target: {fileID: 5766900970277473913, guid: 73c14e8d45e4e9144b37c84dda284101, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12
