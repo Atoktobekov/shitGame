@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public class MovingSpikes : MonoBehaviour
@@ -13,10 +10,15 @@ public class MovingSpikes : MonoBehaviour
 
     private bool isActive = true; // Шипы активны (наносим урон)
 
-    void Start()
+    public bool isTriggered = false;
+    public void Start()
     {
-        StartCoroutine(SpikeRoutine());
+        if (!isTriggered)
+        {
+            StartCoroutine(SpikeRoutine());
+        }
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player" && isActive)
@@ -25,11 +27,8 @@ public class MovingSpikes : MonoBehaviour
 
             if (playerHealth != null)
             {
-                Debug.Log("Player is Dead");
                 playerHealth.takeLive();
-                
                 Vector2 knockbackVector = (other.transform.position - transform.position).normalized;
-                
                 other.gameObject.GetComponent<PlayerControllerr>().getDamageFromSpikes(knockbackVector, knockbackForce);
             }
         }
@@ -40,23 +39,35 @@ public class MovingSpikes : MonoBehaviour
     {
         while (true)
         {
-            // Опускаем шипы под землю
             MoveSpikes(-moveDistance);
-            isActive = false; // Отключаем урон
-            Debug.Log("isActive = " + isActive);
+            isActive = false; 
 
-            // Ждём, пока шипы будут под землёй
             yield return new WaitForSeconds(timeUnderGround);
 
-            // Поднимаем шипы на поверхность
             MoveSpikes(moveDistance);
-            isActive = true; // Включаем урон
-            Debug.Log("Spike is " + isActive);
+            isActive = true; 
 
-            // Ждём, пока шипы будут на поверхности
             yield return new WaitForSeconds(timeAboveGround);
         }
     }
+    
+    public IEnumerator TriggeredSpikeRoutine()
+    {
+        while (true)
+        {
+            MoveSpikes(moveDistance);
+            isActive = true; 
+
+            yield return new WaitForSeconds(timeUnderGround);
+
+            MoveSpikes(-moveDistance);
+            isActive = false; 
+
+            yield return new WaitForSeconds(timeAboveGround);
+        }
+    }
+
+   
     
     private void MoveSpikes(float distance)
     {
