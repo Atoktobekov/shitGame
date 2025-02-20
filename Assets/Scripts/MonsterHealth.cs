@@ -14,7 +14,7 @@ public class MonsterHealth : MonoBehaviour
     {
         if (coll.gameObject.tag == collisiontag)
         {
-            PlayerControllerr player = coll.gameObject.GetComponent<PlayerControllerr>();
+            PlayerController player = coll.gameObject.GetComponent<PlayerController>();
             PlayerHealth playerHealth = coll.gameObject.GetComponent<PlayerHealth>();
 
             // Получаем мировые координаты позиции игрока и врага

@@ -1,11 +1,6 @@
-
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
-
-
-public class PlayerControllerr : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     
@@ -57,37 +52,7 @@ public class PlayerControllerr : MonoBehaviour
         checkGround();
         UpdateAnimator();
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("MovingPlatform"))
-        {
-            // Проверяем, что игрок касается платформы сверху
-            if (collision.contacts[0].normal.y > 0)
-            {
-                transform.SetParent(collision.transform); // Делаем платформу родителем
-            }
-        }
-    }
-  //old function
-    /*private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("MovingPlatform"))
-        {
-            transform.SetParent(null); // Убираем родителя при уходе с платформы
-        }
-    }*/
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("MovingPlatform"))
-        {
-            if (gameObject.activeInHierarchy) // Проверяем, активен ли объект перед сменой родителя
-            {
-                transform.SetParent(null);
-            }
-        }
-    }
-
+    
     private void Move()
     {
         if (!canMove) return;
@@ -125,6 +90,7 @@ public class PlayerControllerr : MonoBehaviour
         }
 
     }
+
     public void Bounce(float force)
     {
         if (rb != null)
@@ -156,7 +122,7 @@ public class PlayerControllerr : MonoBehaviour
         }
     }
 
-    private void checkGround()
+  private void checkGround()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll
             (new Vector2(transform.position.x, transform.position.y + checkGroundOffSetY), checkGroundRadius);
@@ -164,6 +130,7 @@ public class PlayerControllerr : MonoBehaviour
         if (colliders.Length > 1)
         {
             isGrounded = true;
+            jumpCount = 0;
         }
         else
         {
