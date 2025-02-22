@@ -10,9 +10,17 @@ public class MonsterHealth : MonoBehaviour
     private float knockbackForce = 9.35f;
     public int monsterLives = 1;
     public float positionYadding = 1f;
+    private Animator anim;
+    private bool isDead = false;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == collisiontag)
+        if (coll.gameObject.tag == collisiontag && !isDead)
         {
             PlayerController player = coll.gameObject.GetComponent<PlayerController>();
             PlayerHealth playerHealth = coll.gameObject.GetComponent<PlayerHealth>();
@@ -24,8 +32,9 @@ public class MonsterHealth : MonoBehaviour
             // Проверяем, находится ли игрок выше врага (в области головы)
             if (playerPos.y > monsterPos.y+positionYadding)
             {
-                takeLive();
+                isDead = true;  // Помечаем, что враг умирает
                 player.Bounce(bounceForce);
+                StartCoroutine(DeathRoutine()); // Запускаем корутину смерти
             }
             else
             {
@@ -35,13 +44,14 @@ public class MonsterHealth : MonoBehaviour
             }
         }
     }
-
-    private void takeLive()
+    
+    private IEnumerator DeathRoutine()
     {
-        monsterLives--;
-        if (monsterLives <= 0)
-        {
-            Destroy(gameObject);
-        }
+        anim.SetTrigger("Dead"); // Запускаем анимацию смерти
+
+        // Ждём, пока анимация завершится
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+
+        Destroy(gameObject); // Удаляем объект после анимации
     }
 }

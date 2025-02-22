@@ -8,7 +8,7 @@ public class MovingSpikes : MonoBehaviour
     public float timeAboveGround = 3f; // Время, которое шипы проводят на поверхности
     public float moveDistance = 1f; // Расстояние, на которое шипы будут опускаться под землю
 
-    private bool isActive = true; // Шипы активны (наносим урон)
+    private bool isActive = false; // Шипы активны (наносим урон)
 
     public bool isTriggered = false;
     public void Start()

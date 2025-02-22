@@ -18,7 +18,6 @@ public class Spikes : MonoBehaviour
                 playerHealth.takeLive(); // Игрок получает урон
                 Vector2 knockbackDirection = (other.transform.position - transform.position).normalized; // Направление отталкивания
                other.GetComponent<PlayerController>().getDamageFromSpikes(knockbackDirection , knockbackForce);
-                // other.GetComponent<PlayerControllerr>().gotDamageFromEnemy(knockbackDirection, knockbackForce); // Отталкиваем игрока
             }
         }
     }
