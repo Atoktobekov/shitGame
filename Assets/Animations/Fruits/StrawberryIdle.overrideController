@@ -7,5 +7,7 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: StrawberryIdle
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: f15691d5f2403074587532b07e6999a9, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 2418db3a03465a3448d0eb170088d808, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 07606e8c6696b3d46b493f65bfc66951, type: 2}
