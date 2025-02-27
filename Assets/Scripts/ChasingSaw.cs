@@ -5,6 +5,7 @@ public class ChasingSaw : MonoBehaviour
 {
     public float speed = 3f; // Скорость движения пилы
     public float detectionRange = 5f; // Радиус обнаружения игрока
+    public float knockbackForce = 11f;
     private Transform player;
     
     private void Start()
@@ -34,6 +35,8 @@ public class ChasingSaw : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.takeLive();
+                Vector2 knockbackDirection = (other.transform.position - transform.position).normalized; // Направление отталкивания
+                other.gameObject.GetComponent<PlayerController>().getDamageFromSpikes(knockbackDirection , knockbackForce);
             }
         }
     }
