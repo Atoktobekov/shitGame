@@ -20,8 +20,8 @@ public class EndPress : MonoBehaviour
 
     private IEnumerator PlayAnimation()
     {
-        anim.SetTrigger("Press"); // Запускаем анимацию
-        yield return new WaitForSeconds(2.3f); // Ждем 3 секунды
-        anim.SetTrigger("Idle"); // Возвращаем анимацию в Idle
+        anim.SetTrigger("Press"); 
+        yield return new WaitForSeconds(2.3f); 
+        anim.SetTrigger("Idle"); 
     }
 }

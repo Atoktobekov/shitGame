@@ -17,7 +17,7 @@ public class SawDamage : MonoBehaviour
            {
                playerHealth.takeLive(); // Игрок получает урон
                Vector2 knockbackDirection = (other.transform.position - transform.position).normalized; // Направление отталкивания
-               other.gameObject.GetComponent<PlayerController>().getDamageFromSpikes(knockbackDirection , knockbackForce);
+               other.gameObject.GetComponent<PlayerController>().getDamage(knockbackDirection , knockbackForce);
            }
         }
     }

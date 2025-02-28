@@ -13,18 +13,6 @@ public class CollisionHeal : MonoBehaviour
     {
         anim = GetComponent<Animator>();
     }
-
-   /* private void OnCollisionEnter2D(Collision2D coll)
-    {
-        if (coll.gameObject.tag == collisiontag && !isCollected)
-        {
-            PlayerHealth health = coll.gameObject.GetComponent<PlayerHealth>();
-            health.plusLive();
-            isCollected = true;
-            StartCoroutine(DeathRoutine());
-        }
-        
-    }*/
    private void OnTriggerEnter2D(Collider2D other)
    {
        if (other.CompareTag(collisiontag) && !isCollected)

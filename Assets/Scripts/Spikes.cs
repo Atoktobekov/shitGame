@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spikes : MonoBehaviour
 {
-    public float knockbackForce = 5f;
+    public float knockbackForce = 9.2f;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -17,7 +17,7 @@ public class Spikes : MonoBehaviour
             {
                 playerHealth.takeLive(); // Игрок получает урон
                 Vector2 knockbackDirection = (other.transform.position - transform.position).normalized; // Направление отталкивания
-               other.GetComponent<PlayerController>().getDamageFromSpikes(knockbackDirection , knockbackForce);
+               other.GetComponent<PlayerController>().getDamage(knockbackDirection , knockbackForce);
             }
         }
     }

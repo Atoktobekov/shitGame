@@ -99,29 +99,17 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.up * force, ForceMode2D.Impulse); // Применяем импульс вверх
         }
     }
-
-    public void getDamageFromEnemy(Vector2 vec, float force)
-    {
-        if (rb != null)
-        {
-            animator.SetTrigger("Hit");
-            rb.velocity = new Vector2(vec.x * force, rb.velocity.y);
-            StartCoroutine(KnockbackCoroutine(0.2f));
-
-        }
-    }
-
-    public void getDamageFromSpikes(Vector2 vector2, float force)
+    
+    public void getDamage(Vector2 vector2, float force)
     {
         if (rb != null)
         {
             animator.SetTrigger("Hit");
             rb.velocity = new Vector2(vector2.x * force, vector2.y * force);
             StartCoroutine(KnockbackCoroutine(0.2f));
-
         }
     }
-
+    
   private void checkGround()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll
@@ -149,11 +137,16 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(groundCheckPos, checkGroundRadius);
     }
     
-    IEnumerator KnockbackCoroutine(float duration)
+    public IEnumerator KnockbackCoroutine(float duration)
     {
         canMove = false; // Отключаем управление
         yield return new WaitForSeconds(duration);
         canMove = true; // Включаем обратно
+    }
+
+    public void SetCanMove(bool value)
+    {
+        canMove = value;
     }
 
 }
