@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -27,9 +26,9 @@ public class PlayerHealth : MonoBehaviour
 
    private void OnTriggerEnter2D(Collider2D collision)
    {
-      if (collision.tag == "Bottom")
+      if (collision.CompareTag("Bottom"))
       {
-         StartCoroutine(Die());
+         StartCoroutine(DieFromCringe());
       }   
    }
    public void takeLive()
@@ -40,6 +39,7 @@ public class PlayerHealth : MonoBehaviour
 
       if (lives <= 0)
       {
+         Debug.Log("Starting Die coroutine");
          StartCoroutine(Die());
       }
    }
@@ -50,8 +50,9 @@ public class PlayerHealth : MonoBehaviour
       livesText.text = lives.ToString();
    }
 
-   private IEnumerator Die()
+  /* private IEnumerator Die()
    {
+      player.SetCanMove(false);
       isDead = true;
       anim.SetTrigger("Die"); // Анимация смерти
       rb.velocity = Vector2.zero;  // Останавливаем движение
@@ -71,23 +72,81 @@ public class PlayerHealth : MonoBehaviour
       livesText.text = lives.ToString();
       StartCoroutine(Respawn()); // Восстановление игрока после смерти
 
-   }
+   }*/
+  private IEnumerator Die()
+  {
+     player.SetCanMove(false); 
+     isDead = true;
+     rb.velocity = Vector2.zero; 
+
+     StartCoroutine(WaitForHitThenDie());
+
+     yield return new WaitForSeconds(0.6f);
+     
+     playerCopies--; 
+     if (playerCopies < 0)
+     {
+        Debug.Log("Game Over");
+        Destroy(gameObject);
+        yield break; 
+     }
+    
+     playerCopiesText.text = playerCopies.ToString();
+     lives = 3;
+     livesText.text = lives.ToString();
+
+     yield return StartCoroutine(Respawn()); 
+  }
+
+  private IEnumerator DieFromCringe()
+  {
+     player.SetCanMove(false); 
+     isDead = true;
+     rb.velocity = Vector2.zero; 
+     
+     anim.Play("Die");
+     yield return new WaitForSeconds(0.6f);
+     
+     playerCopies--; 
+     if (playerCopies < 0)
+     {
+        Debug.Log("Game Over");
+        Destroy(gameObject);
+        yield break; 
+     }
+    
+     playerCopiesText.text = playerCopies.ToString();
+     lives = 3;
+     livesText.text = lives.ToString();
+
+     yield return StartCoroutine(Respawn()); 
+  }
+
 
    public void SetCheckpoint(Vector3 checkPoint)
    {
         respawnPoint = checkPoint;
    }
+   
+  private IEnumerator Respawn()
+  {
+     transform.position = respawnPoint; 
+     rb.velocity = Vector2.zero;
 
-  IEnumerator Respawn()
-   {
-      anim.SetTrigger("Appear"); // Анимация появления
-      yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+     anim.Play("Appearing");
+     yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
-      transform.position = respawnPoint; // Возвращаем игрока в точку респауна
-      rb.velocity = Vector2.zero;  // Останавливаем движение
-      isDead = false; // Игрок больше не мёртв
-      
-      
-      player.SetCanMove(true);
-   }
+     isDead = false;
+     player.SetCanMove(true);
+  }
+  
+  private IEnumerator WaitForHitThenDie()
+  {
+     yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && 
+                                      anim.GetCurrentAnimatorStateInfo(0).IsName("Hit"));
+
+     anim.Play("Die"); 
+  }
+
+
 }
