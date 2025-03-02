@@ -39,7 +39,6 @@ public class PlayerHealth : MonoBehaviour
 
       if (lives <= 0)
       {
-         Debug.Log("Starting Die coroutine");
          StartCoroutine(Die());
       }
    }
@@ -49,30 +48,7 @@ public class PlayerHealth : MonoBehaviour
       lives++;
       livesText.text = lives.ToString();
    }
-
-  /* private IEnumerator Die()
-   {
-      player.SetCanMove(false);
-      isDead = true;
-      anim.SetTrigger("Die"); // Анимация смерти
-      rb.velocity = Vector2.zero;  // Останавливаем движение
-
-      player.SetCanMove(false);
-      // Ожидаем завершения анимации смерти
-      yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
-
-      playerCopies--; // Уменьшаем количество копий игрока
-      if (playerCopies < 0)
-      {
-         Debug.Log("Game Over");
-         Destroy(gameObject); // Уничтожаем объект, если копии закончились
-      }
-      playerCopiesText.text = playerCopies.ToString();
-      lives = 3;
-      livesText.text = lives.ToString();
-      StartCoroutine(Respawn()); // Восстановление игрока после смерти
-
-   }*/
+   
   private IEnumerator Die()
   {
      player.SetCanMove(false); 

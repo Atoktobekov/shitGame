@@ -10,13 +10,7 @@ public class PlatformPatrol : MonoBehaviour
     private bool movingLeft = true;
 
     public Transform groundDetection;
-    private Animator anim;
-
-    private void Start()
-    {
-        anim = GetComponent<Animator>();
-    }
-
+    
     void Update()
     {
         transform.Translate(Vector3.left * speed * Time.deltaTime);
@@ -25,7 +19,6 @@ public class PlatformPatrol : MonoBehaviour
         
         if (!groundInfo.collider)
         {
-            anim.SetBool("isMoving", true);
             if (movingLeft)
             {
                 transform.eulerAngles =  new Vector3(0, 180, 0);

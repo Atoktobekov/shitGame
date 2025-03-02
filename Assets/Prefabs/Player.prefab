@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ac015a2d974913b15e110b86a29188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  candyPrefab: {fileID: 300175912422741227, guid: 56431145360cb8a4daee33ee439e5d05, type: 3}
+  candyPrefab: {fileID: 295778758254455812, guid: 64c08c7709f45594f8eca6aff911d7b8, type: 3}
   firePoint: {fileID: 5654807783542176252}
-  shootForce: 43.3
+  shootForce: 24
   fireRate: 0.2

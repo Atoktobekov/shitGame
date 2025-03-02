@@ -8,6 +8,7 @@ TagManager:
   - Gem
   - MovingPlatform
   - Bottom
+  - Bullet
   layers:
   - Default
   - TransparentFX

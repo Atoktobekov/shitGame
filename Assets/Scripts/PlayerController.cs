@@ -106,7 +106,6 @@ public class PlayerController : MonoBehaviour
     {
         if (rb != null)
         {
-            Debug.Log("Got damage");
             animator.SetTrigger("Hit");
             rb.velocity = new Vector2(vector2.x * force, vector2.y * force);
             StartCoroutine(KnockbackCoroutine(0.2f));
@@ -143,7 +142,6 @@ public class PlayerController : MonoBehaviour
     public IEnumerator KnockbackCoroutine(float duration)
     {
         canMove = false; 
-        
         yield return new WaitForSeconds(duration);
         canMove = true; 
     }
