@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     
     public int extraJumps = 1;
     private int jumpCount = 0;
+    private bool isDead;
 
     [Header("Player Movement Settings")] 
     [Range(5, 25f)] public float jumpForce;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (isDead) return;
         if (!canMove) return;
         Jump();
         horizontalMove = Input.GetAxis("Horizontal") * speed;
@@ -49,7 +51,9 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (isDead) return;
         if (!canMove) return;
+
         Move();
         checkGround();
         UpdateAnimator();
@@ -57,7 +61,6 @@ public class PlayerController : MonoBehaviour
     
     private void Move()
     {
-        if (!canMove) return;
         Vector2 targetVelocity = new Vector2(horizontalMove * 5f, rb.velocity.y);
         rb.velocity = targetVelocity;
     }
@@ -148,7 +151,17 @@ public class PlayerController : MonoBehaviour
 
     public void SetCanMove(bool value)
     {
-        canMove = value;
+        isDead = !value;
+        if (isDead)
+        {
+            rb.bodyType = RigidbodyType2D.Static;
+//            rb.velocity = Vector2.zero;
+            enabled = false;
+        }
+        else
+        {
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            enabled = true;
+        }
     }
-
 }

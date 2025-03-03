@@ -15,9 +15,10 @@ public class Spikes : MonoBehaviour
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.takeLive(); // Игрок получает урон
                 Vector2 knockbackDirection = (other.transform.position - transform.position).normalized; // Направление отталкивания
                other.GetComponent<PlayerController>().getDamage(knockbackDirection , knockbackForce);
+            
+               playerHealth.takeLive(); // Игрок получает урон
             }
         }
     }

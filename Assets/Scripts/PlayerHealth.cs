@@ -53,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
   {
      player.SetCanMove(false); 
      isDead = true;
-     rb.velocity = Vector2.zero; 
+//     rb.velocity = Vector2.zero; 
 
      StartCoroutine(WaitForHitThenDie());
 
@@ -78,7 +78,7 @@ public class PlayerHealth : MonoBehaviour
   {
      player.SetCanMove(false); 
      isDead = true;
-     rb.velocity = Vector2.zero; 
+//     rb.velocity = Vector2.zero; 
      
      anim.Play("Die");
      yield return new WaitForSeconds(0.6f);
@@ -107,7 +107,7 @@ public class PlayerHealth : MonoBehaviour
   private IEnumerator Respawn()
   {
      transform.position = respawnPoint; 
-     rb.velocity = Vector2.zero;
+//     rb.velocity = Vector2.zero;
 
      anim.Play("Appearing");
      yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);

@@ -34,9 +34,10 @@ public class ChasingSaw : MonoBehaviour
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.takeLive();
                 Vector2 knockbackDirection = (other.transform.position - transform.position).normalized; // Направление отталкивания
                 other.gameObject.GetComponent<PlayerController>().getDamage(knockbackDirection , knockbackForce);
+                playerHealth.takeLive();
+
             }
         }
     }

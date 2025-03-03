@@ -27,9 +27,10 @@ public class MovingSpikes : MonoBehaviour
 
             if (playerHealth != null)
             {
-                playerHealth.takeLive();
                 Vector2 knockbackVector = (other.transform.position - transform.position).normalized;
                 other.gameObject.GetComponent<PlayerController>().getDamage(knockbackVector, knockbackForce);
+                playerHealth.takeLive();
+
             }
         }
     }

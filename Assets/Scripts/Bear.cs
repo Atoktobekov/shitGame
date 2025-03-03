@@ -20,8 +20,8 @@ public class Bear : MonoBehaviour
             PlayerHealth playerHealth = coll.gameObject.GetComponent<PlayerHealth>();
             
             Vector2 knockbackDir = (transform.position.x > coll.transform.position.x) ? Vector2.left : Vector2.right;
-            playerHealth.takeLive();
             player.getDamage(knockbackDir, knockbackForce);
+            playerHealth.takeLive();
         }
 
         if (coll.gameObject.CompareTag("Bullet"))
