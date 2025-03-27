@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using Cinemachine;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class PlayerHealth : MonoBehaviour
    private PlayerController player;
    private Rigidbody2D rb;   
    private Animator anim;
+   public float cameraMoveDuration = 0.5f; // Время плавного возврата камеры
+   
+   public CinemachineVirtualCamera virtualCamera; // Cinemachine камера
+   
+      
 
    void Start()
    {
@@ -53,8 +59,6 @@ public class PlayerHealth : MonoBehaviour
   {
      player.SetCanMove(false); 
      isDead = true;
-//     rb.velocity = Vector2.zero; 
-
      StartCoroutine(WaitForHitThenDie());
 
      yield return new WaitForSeconds(0.6f);
@@ -78,8 +82,6 @@ public class PlayerHealth : MonoBehaviour
   {
      player.SetCanMove(false); 
      isDead = true;
-//     rb.velocity = Vector2.zero; 
-     
      anim.Play("Die");
      yield return new WaitForSeconds(0.6f);
      
@@ -104,16 +106,42 @@ public class PlayerHealth : MonoBehaviour
         respawnPoint = checkPoint;
    }
    
-  private IEnumerator Respawn()
+ 
+ private IEnumerator Respawn()
+ {
+    Vector3 oldPosition = transform.position; // Запоминаем старую позицию игрока
+    transform.position = respawnPoint; // Устанавливаем игрока в точку респауна
+        
+    // Плавно двигаем и игрока, и камеру к точке респауна
+    yield return StartCoroutine(SmoothCameraAndPlayerReset());
+
+    anim.Play("Appearing"); // Запускаем анимацию появления
+    yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f); // Ждем окончания анимации
+
+    isDead = false; // Игрок оживает
+    player.SetCanMove(true); // Разрешаем движение игрока
+ }
+ 
+  private IEnumerator SmoothCameraAndPlayerReset()
   {
-     transform.position = respawnPoint; 
-//     rb.velocity = Vector2.zero;
+     Transform camTransform = virtualCamera.transform; // Получаем трансформ камеры
+     Vector3 startPosition = camTransform.position; // Запоминаем начальную позицию камеры
+     Vector3 targetPosition = new Vector3(respawnPoint.x, respawnPoint.y, camTransform.position.z); // Целевая позиция камеры
+     float elapsedTime = 0f; // Время, прошедшее с начала интерполяции
 
-     anim.Play("Appearing");
-     yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+     while (elapsedTime < cameraMoveDuration)
+     {
+        // Плавно двигаем и игрока, и камеру
+        transform.position = Vector3.Lerp(startPosition, respawnPoint, elapsedTime / cameraMoveDuration); // Лерп для игрока
+        camTransform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / cameraMoveDuration); // Лерп для камеры
 
-     isDead = false;
-     player.SetCanMove(true);
+        elapsedTime += Time.deltaTime; // Обновляем время
+        yield return null; // Ждем следующего кадра
+     }
+
+     // Убеждаемся, что позиция игрока и камеры точно на месте
+     transform.position = respawnPoint;
+     camTransform.position = targetPosition;
   }
   
   private IEnumerator WaitForHitThenDie()
@@ -123,6 +151,5 @@ public class PlayerHealth : MonoBehaviour
 
      anim.Play("Die"); 
   }
-
 
 }

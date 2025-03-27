@@ -175,10 +175,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103d4ddbf63246446829b5881cb0c5d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 2
+  lives: 3
   playerCopies: 3
   playerCopiesText: {fileID: 0}
   livesText: {fileID: 0}
+  cameraMoveDuration: 1
+  virtualCamera: {fileID: 0}
 --- !u!114 &6716070114963159045
 MonoBehaviour:
   m_ObjectHideFlags: 0
