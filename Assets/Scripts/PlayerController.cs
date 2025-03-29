@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 public class PlayerController : MonoBehaviour
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
+    
 
     void Update()
     {
@@ -89,6 +91,7 @@ public class PlayerController : MonoBehaviour
         if ((isGrounded || jumpCount<extraJumps)
             && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)))
         {
+            AudioManager.instance.PlaySFX("jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Устанавливаем вертикальную скорость
             jumpCount++;
             animator.SetBool("isJumping", true);
@@ -99,7 +102,7 @@ public class PlayerController : MonoBehaviour
     public void Bounce(float force)
     {
         if (rb != null)
-        {
+        {   AudioManager.instance.PlaySFX("jump");
             rb.velocity = new Vector2(rb.velocity.x, 0); // Сброс скорости по вертикали
             rb.AddForce(Vector2.up * force, ForceMode2D.Impulse); // Применяем импульс вверх
         }
@@ -108,7 +111,7 @@ public class PlayerController : MonoBehaviour
     public void getDamage(Vector2 vector2, float force)
     {
         if (rb != null)
-        {
+        {   AudioManager.instance.PlaySFX("hit");
             animator.SetTrigger("Hit");
             rb.velocity = new Vector2(vector2.x * force, vector2.y * force);
             StartCoroutine(KnockbackCoroutine(0.2f));

@@ -10,7 +10,7 @@ public class PlayerShooting : MonoBehaviour
     public float shootForce = 10f; // Сила выстрела
     public float fireRate = 0.5f;  // Задержка между выстрелами
     private float nextFireTime = 0f; // Время следующего выстрела
-    private bool canShoot = false;
+    private bool canShoot = true;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= nextFireTime && canShoot) // Стреляем 
@@ -19,9 +19,12 @@ public class PlayerShooting : MonoBehaviour
             nextFireTime = Time.time + fireRate; // Устанавливаем задержку между выстрелами
         }
     }
+    
+    
 
     void Shoot()
-    {
+    {   
+        AudioManager.instance.PlaySFX("shoot");
         GameObject candy = Instantiate(candyPrefab, firePoint.position, Quaternion.identity); // Создаём леденец
         Rigidbody2D rb = candy.GetComponent<Rigidbody2D>();
 

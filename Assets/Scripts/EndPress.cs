@@ -4,6 +4,7 @@ using UnityEngine;
 public class EndPress : MonoBehaviour
 {
     private Animator anim;
+    public bool toSampleScene = false;
 
     private void Start()
     {
@@ -13,8 +14,17 @@ public class EndPress : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        {
+        {   
+            AudioManager.instance.PlaySFX("end");
             StartCoroutine(PlayAnimation());
+            if (toSampleScene)
+            {
+                SceneController.instance.loadScene("SampleScene");
+            }
+            else
+            {
+                SceneController.instance.nextLevel();
+            }
         }
     }
 
@@ -22,6 +32,6 @@ public class EndPress : MonoBehaviour
     {
         anim.SetTrigger("Press"); 
         yield return new WaitForSeconds(2.3f); 
-        anim.SetTrigger("Idle"); 
+        anim.SetTrigger("Idle");   
     }
 }

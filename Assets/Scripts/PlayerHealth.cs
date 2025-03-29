@@ -57,6 +57,7 @@ public class PlayerHealth : MonoBehaviour
    
   private IEnumerator Die()
   {
+     AudioManager.instance.PlaySFX("die");
      player.SetCanMove(false); 
      isDead = true;
      StartCoroutine(WaitForHitThenDie());
@@ -80,6 +81,7 @@ public class PlayerHealth : MonoBehaviour
 
   private IEnumerator DieFromCringe()
   {
+     AudioManager.instance.PlaySFX("die");
      player.SetCanMove(false); 
      isDead = true;
      anim.Play("Die");
@@ -102,7 +104,8 @@ public class PlayerHealth : MonoBehaviour
 
 
    public void SetCheckpoint(Vector3 checkPoint)
-   {
+   { 
+        AudioManager.instance.PlaySFX("checkpoint");
         respawnPoint = checkPoint;
    }
    

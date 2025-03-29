@@ -17,6 +17,7 @@ public class CollisionHeal : MonoBehaviour
    {
        if (other.CompareTag(collisiontag) && !isCollected)
        {
+           AudioManager.instance.PlaySFX("fruitPick");
            PlayerHealth health = other.GetComponent<PlayerHealth>();
            if (health != null)
            {

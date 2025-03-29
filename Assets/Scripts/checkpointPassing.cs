@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class checkpointPassing : MonoBehaviour
 {
+    private bool isPassed = false;
     private Animator anim;
     void Start()
     {
@@ -15,7 +16,11 @@ public class checkpointPassing : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             anim.SetTrigger("Pass");
-            collision.GetComponent<PlayerHealth>().SetCheckpoint(transform.position);
+            if (!isPassed)
+            {
+                isPassed = true;
+                collision.GetComponent<PlayerHealth>().SetCheckpoint(transform.position);
+            }
         }
     }
 }

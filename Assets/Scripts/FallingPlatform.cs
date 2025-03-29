@@ -38,6 +38,7 @@ public class FallingPlatform : MonoBehaviour
 
     private void Fall()
     {
+        AudioManager.instance.PlaySFX("platformFall");
         platformCollider.enabled = false;  // Отключаем коллайдер, чтобы игрок не мог снова наступить на платформу
         rb.isKinematic = false;  // Делаем платформу подвижной
         rb.gravityScale = platformFallingGravityScale;  // Устанавливаем гравитацию, чтобы платформа падала

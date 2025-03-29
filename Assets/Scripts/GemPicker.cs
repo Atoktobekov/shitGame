@@ -13,6 +13,7 @@ public class GemPicker : MonoBehaviour
     {
         if (coll.gameObject.tag == "Gem")
         {
+            AudioManager.instance.PlaySFX("coinPick");
             gems++;
             gemsText.text = gems.ToString();
             Destroy(coll.gameObject);

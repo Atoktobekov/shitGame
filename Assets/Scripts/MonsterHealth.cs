@@ -32,6 +32,7 @@ public class MonsterHealth : MonoBehaviour
             // Проверяем, находится ли игрок выше врага (в области головы)
             if (playerPos.y > monsterPos.y+positionYadding)
             {
+                AudioManager.instance.PlaySFX("enemyExplosion");
                 isDead = true;  // Помечаем, что враг умирает
                 player.Bounce(bounceForce);
                 StartCoroutine(DeathRoutine()); // Запускаем корутину смерти

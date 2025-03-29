@@ -9,6 +9,7 @@ TagManager:
   - MovingPlatform
   - Bottom
   - Bullet
+  - Audio
   layers:
   - Default
   - TransparentFX

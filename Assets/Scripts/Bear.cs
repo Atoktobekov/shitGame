@@ -26,6 +26,7 @@ public class Bear : MonoBehaviour
 
         if (coll.gameObject.CompareTag("Bullet"))
         {
+            AudioManager.instance.PlaySFX("enemyDamage");
             lives--;
             Destroy(coll.gameObject);
             StartCoroutine(HitRoutine());
@@ -48,6 +49,7 @@ public class Bear : MonoBehaviour
 
     IEnumerator DieRoutine()
     {
+        AudioManager.instance.PlaySFX("enemyExplosion");
         anim.SetTrigger("Die");
         yield return new WaitForSeconds(0.4f);
         Destroy(gameObject);

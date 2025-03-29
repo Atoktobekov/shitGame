@@ -29,6 +29,7 @@ public class RockHeadScript : MonoBehaviour
 
         if (coll.gameObject.CompareTag("Bullet"))
         {
+            AudioManager.instance.PlaySFX("enemyDamage");
             lives--;
             Destroy(coll.gameObject);
             StartCoroutine(HitRoutine());
@@ -60,6 +61,7 @@ public class RockHeadScript : MonoBehaviour
 
     IEnumerator DieRoutine()
     {
+        AudioManager.instance.PlaySFX("enemyExplosion");
         anim.Play("RockHead_Death");
         yield return new WaitForSeconds(0.4f);
         Destroy(gameObject);
