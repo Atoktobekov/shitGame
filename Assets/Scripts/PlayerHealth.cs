@@ -85,6 +85,7 @@ public class PlayerHealth : MonoBehaviour
      player.SetCanMove(false); 
      isDead = true;
      anim.Play("Die");
+     anim.SetTrigger("Die");
      yield return new WaitForSeconds(0.6f);
      
      playerCopies--; 
@@ -151,7 +152,7 @@ public class PlayerHealth : MonoBehaviour
   {
      yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && 
                                       anim.GetCurrentAnimatorStateInfo(0).IsName("Hit"));
-
+     anim.SetTrigger("Die");
      anim.Play("Die"); 
   }
 
