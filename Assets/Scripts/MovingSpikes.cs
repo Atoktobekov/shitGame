@@ -7,7 +7,7 @@ public class MovingSpikes : MonoBehaviour
     public float timeUnderGround = 3f; // Время, которое шипы проводят под землёй
     public float timeAboveGround = 3f; // Время, которое шипы проводят на поверхности
     public float moveDistance = 1f; // Расстояние, на которое шипы будут опускаться под землю
-
+    public float waitTime = 0f;
     private bool isActive = false; // Шипы активны (наносим урон)
 
     public bool isTriggered = false;
@@ -15,7 +15,7 @@ public class MovingSpikes : MonoBehaviour
     {
         if (!isTriggered)
         {
-            StartCoroutine(SpikeRoutine());
+            StartCoroutine(WaitRoutine(waitTime));
         }
     }
 
@@ -35,7 +35,11 @@ public class MovingSpikes : MonoBehaviour
         }
     }
 
-
+    private IEnumerator WaitRoutine(float time)
+    {
+        yield return new WaitForSeconds(time);
+        StartCoroutine(SpikeRoutine());
+    }
     private IEnumerator SpikeRoutine()
     {
         while (true)
