@@ -10,7 +10,7 @@ public class PlayerShooting : MonoBehaviour
     public float shootForce = 10f; // Сила выстрела
     public float fireRate = 0.5f;  // Задержка между выстрелами
     private float nextFireTime = 0f; // Время следующего выстрела
-    private bool canShoot = true;
+    private bool canShoot = false;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= nextFireTime && canShoot) // Стреляем 
