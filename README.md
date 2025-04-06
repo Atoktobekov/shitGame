@@ -39,9 +39,9 @@
 
 ## 🚀 Как запустить проект
 
--git clone https://github.com/Atoktobekov/shitGame.git
-- Открыть проект в Unity (желательно 2021.3 или новее)
-- Запустить сцену MainMenu или Level1
+1. git clone https://github.com/Atoktobekov/shitGame.git
+2. Открыть проект в Unity (желательно 2021.3 или новее)
+3. Запустить сцену MainMenu или Level1
 
 ---
 
@@ -55,21 +55,21 @@
 ---
 
 ## 🗺️ Планы на будущее
-- Доделать уровни (6–15)
+1. Доделать уровни (6–15)
 
-- Отладить все баги
+2. Отладить все баги
 
-- Добавить настройки
+3. Добавить настройки
 
-- Сдать куратору 😄
+4. Сдать куратору 😄
  
 ---
  
 ## 📬 Обратная связь
 Если есть идеи, баги, или хочешь поддержать проект — пиши!
-Telegram: dRacula18
-E-mail: adil_toktobekov@mail.ru
-Instagram: adi_toktobekov
+- Telegram: dRacula18
+- E-mail: adil_toktobekov@mail.ru
+- Instagram: adi_toktobekov
 
 ---
 
@@ -120,41 +120,43 @@ This project was created to help me grow my skills in Unity and C#. I decided to
 
 ## 🚀 How to Run the Project
 
-git clone https://github.com/Atoktobekov/shitGame.git
+1. git clone https://github.com/Atoktobekov/shitGame.git
 
-1. Open the project in Unity (recommended version: 2021.3 or newer)
+2. Open the project in Unity (recommended version: 2021.3 or newer)
 
-2. Launch the MainMenu or Level1 scene
+3. Launch the MainMenu or Level1 scene
 
-
-
-
-🛠️ Technologies Used
-Technology	Used
-Unity		✅
-C#			✅
-Git			✅
-Rider		✅
+---
 
 
-🗺️ Future Plans
- Finish levels (6–15)
+## 🛠️ Technologies Used
 
- Debug and polish the game
+- Unity		
+- C#			
+- Git			
+- Rider		
 
- Add a settings menu
+---
 
- Submit the final version to my course curator 😄
+## 🗺️ Future Plans
+1. Finish levels (6–15)
+ 
+2. Debug and polish the game
+
+3. Add a settings menu
+
+4. Submit the final version to my course curator 😄
  
  
- 📬 Contact
+ ## 📬 Contact
 If you have ideas, found bugs, or just want to connect — feel free to reach out!
 
-📲 Telegram: @dRacula18
+- 📲 Telegram: @dRacula18
 
-📧 Email: adil_toktobekov@mail.ru
+- 📧 Email: adil_toktobekov@mail.ru
 
-📸 Instagram: @adi_toktobekov
+- 📸 Instagram: @adi_toktobekov
 
+---
 
 Developed with love during the learning journey ❤️
