@@ -54,6 +54,12 @@ public class PlayerHealth : MonoBehaviour
       lives++;
       livesText.text = lives.ToString();
    }
+
+   public void plusCopy()
+   {
+      playerCopies++;
+      playerCopiesText.text = playerCopies.ToString();
+   }
    
   private IEnumerator Die()
   {
