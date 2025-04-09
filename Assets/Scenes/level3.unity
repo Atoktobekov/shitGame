@@ -1717,7 +1717,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 35
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1.5
@@ -14460,6 +14460,10 @@ PrefabInstance:
     - target: {fileID: 5241474973035194879, guid: 791039cf591aa094ba002abffb1a6de5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6249123299648118101, guid: 791039cf591aa094ba002abffb1a6de5, type: 3}
+      propertyPath: m_Mass
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
