@@ -651,6 +651,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1007688138747783371, guid: ab51824f66ba24344be41753753a46bc, type: 3}
+      propertyPath: waitTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2284195811883463075, guid: ab51824f66ba24344be41753753a46bc, type: 3}
       propertyPath: m_Name
       value: MovingSpikes (4)
@@ -3024,6 +3028,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1007688138747783371, guid: ab51824f66ba24344be41753753a46bc, type: 3}
+      propertyPath: waitTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2284195811883463075, guid: ab51824f66ba24344be41753753a46bc, type: 3}
       propertyPath: m_Name
       value: MovingSpikes (2)
@@ -3298,6 +3306,10 @@ PrefabInstance:
     - target: {fileID: 638697539954090570, guid: ab51824f66ba24344be41753753a46bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007688138747783371, guid: ab51824f66ba24344be41753753a46bc, type: 3}
+      propertyPath: waitTime
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2284195811883463075, guid: ab51824f66ba24344be41753753a46bc, type: 3}
       propertyPath: m_Name
