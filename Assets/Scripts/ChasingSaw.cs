@@ -3,11 +3,14 @@ using UnityEngine;
 
 public class ChasingSaw : MonoBehaviour
 {
-    public float speed = 3f; // Скорость движения пилы
-    public float detectionRange = 5f; // Радиус обнаружения игрока
+    public float speed = 3f;
+    public float detectionRange = 5f;
     public float knockbackForce = 11f;
     private Transform player;
-    
+    private bool isRetreating = false;
+    private Vector2 retreatDirection;
+    private Vector2 retreatTarget;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
@@ -15,15 +18,28 @@ public class ChasingSaw : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(0, 0, 200 * Time.deltaTime); // 200 - скорость вращения
+        transform.Rotate(0, 0, 200 * Time.deltaTime);
 
         if (player == null) return;
 
-        float distance = Vector2.Distance(transform.position, player.position);
-        if (distance <= detectionRange)
+        if (isRetreating)
         {
-            // Двигаемся к игроку
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            // Двигаемся назад
+            transform.position = Vector2.MoveTowards(transform.position, retreatTarget, speed * Time.deltaTime);
+
+            // Проверка: достигли ли точки отступления
+            if (Vector2.Distance(transform.position, retreatTarget) < 0.1f)
+            {
+                isRetreating = false; // Возврат к обычному поведению
+            }
+        }
+        else
+        {
+            float distance = Vector2.Distance(transform.position, player.position);
+            if (distance <= detectionRange)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            }
         }
     }
 
@@ -34,10 +50,14 @@ public class ChasingSaw : MonoBehaviour
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                Vector2 knockbackDirection = (other.transform.position - transform.position).normalized; // Направление отталкивания
-                other.gameObject.GetComponent<PlayerController>().getDamage(knockbackDirection , knockbackForce);
+                Vector2 knockbackDirection = (other.transform.position - transform.position).normalized;
+                other.gameObject.GetComponent<PlayerController>().getDamage(knockbackDirection, knockbackForce);
                 playerHealth.takeLive();
 
+                // Запуск отступления
+                retreatDirection = (transform.position - player.position).normalized;
+                retreatTarget = (Vector2)transform.position + retreatDirection * detectionRange;
+                isRetreating = true;
             }
         }
     }

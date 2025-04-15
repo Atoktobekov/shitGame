@@ -47,7 +47,7 @@ public class RockHeadScript : MonoBehaviour
             anim.SetTrigger("Idle");
             yield return new WaitForSeconds(blinkPeriod);
             anim.SetBool("Blink", true);
-            yield return new WaitUntil(() => anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+            yield return new WaitForSeconds(1f);
             anim.SetBool("Blink", false);
         }
     }
