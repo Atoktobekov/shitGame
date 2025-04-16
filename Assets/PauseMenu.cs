@@ -7,12 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public bool paused = false;
-
-
-    private void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-    } 
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
