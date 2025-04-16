@@ -108,7 +108,7 @@ public class AudioManager : MonoBehaviour
     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "MainMenu")
+        if (scene.name == "Menu")
         {
             PlayMusic(menuMusic);
         }
