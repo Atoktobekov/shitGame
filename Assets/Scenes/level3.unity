@@ -2202,6 +2202,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8103944328551938202, guid: ab13c7c5d8aaaac45acc23037ea4f85a, type: 3}
   m_PrefabInstance: {fileID: 1128659706}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1128659708 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 940724799186043837, guid: ab13c7c5d8aaaac45acc23037ea4f85a, type: 3}
+  m_PrefabInstance: {fileID: 1128659706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1167960957 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8821593592780038485, guid: e48549d7a26c1294a8f9927389ccfff9, type: 3}
@@ -15095,6 +15100,10 @@ PrefabInstance:
       propertyPath: livesText
       value: 
       objectReference: {fileID: 769178925}
+    - target: {fileID: 568088177309657640, guid: 5251f3218bec6cc43b3cb1705a0381f5, type: 3}
+      propertyPath: gameOverPanel
+      value: 
+      objectReference: {fileID: 1128659708}
     - target: {fileID: 568088177309657640, guid: 5251f3218bec6cc43b3cb1705a0381f5, type: 3}
       propertyPath: virtualCamera
       value: 

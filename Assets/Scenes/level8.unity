@@ -5022,7 +5022,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0fd12f21af034844099f153ab1a83abf, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -26162,6 +26162,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8103944328551938202, guid: ab13c7c5d8aaaac45acc23037ea4f85a, type: 3}
   m_PrefabInstance: {fileID: 1688195285}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1688195287 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 940724799186043837, guid: ab13c7c5d8aaaac45acc23037ea4f85a, type: 3}
+  m_PrefabInstance: {fileID: 1688195285}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1712129284 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2286443044042339936, guid: 7f82cb34f28e39d43ae1ba3b071d1280, type: 3}
@@ -27960,6 +27965,10 @@ PrefabInstance:
       propertyPath: livesText
       value: 
       objectReference: {fileID: 769178925}
+    - target: {fileID: 568088177309657640, guid: 5251f3218bec6cc43b3cb1705a0381f5, type: 3}
+      propertyPath: gameOverPanel
+      value: 
+      objectReference: {fileID: 1688195287}
     - target: {fileID: 568088177309657640, guid: 5251f3218bec6cc43b3cb1705a0381f5, type: 3}
       propertyPath: virtualCamera
       value: 
