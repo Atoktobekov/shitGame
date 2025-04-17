@@ -17,7 +17,6 @@ public class OptionsMenu : MonoBehaviour
 
         musicSlider.onValueChanged.AddListener(SetMusicVolume);
         sfxSlider.onValueChanged.AddListener(SetSFXVolume);
-        UpdateFullscreenText();
     }
 
     private void SetMusicVolume(float volume)
@@ -31,14 +30,27 @@ public class OptionsMenu : MonoBehaviour
     }
     public void ToggleFullscreen()
     {
-        Screen.fullScreen = !Screen.fullScreen;
+        bool goingFullscreen = !Screen.fullScreen;
+
+        if (goingFullscreen)
+        {
+            // Переключаем в полноэкранный режим с текущим разрешением монитора
+            Screen.SetResolution(Display.main.systemWidth, Display.main.systemHeight, FullScreenMode.FullScreenWindow);
+        }
+        else
+        {
+            // Переключаем в оконный режим 1280x720
+            Screen.SetResolution(1280, 720, FullScreenMode.Windowed);
+        }
+
         UpdateFullscreenText();
     }
+
 
     void UpdateFullscreenText()
     {
         Debug.Log("Fullscreen mode changed");
-        fullscreenText.text = (Screen.fullScreen ? "ON" : "OFF");
+        fullscreenText.text = (Screen.fullScreen ? "OFF" : "ON");
     }
     
     
