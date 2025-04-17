@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndPress : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class EndPress : MonoBehaviour
             
             FindObjectOfType<PauseMenu>().ShowFinish(collected, total);
             other.GetComponent<PlayerController>().SetCanMove(false);
+            LevelManager.UnlockNextLevel(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
