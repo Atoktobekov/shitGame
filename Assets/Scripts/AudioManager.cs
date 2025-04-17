@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
+    private const float musicVolumeMultiplier = 0.35f;
+    private const float sfxVolumeMultiplier = 1f; // или тоже ослабить, если надо
+
 
     [Header("---------------Audio Sources---------------")]
     [SerializeField] private AudioSource musicSource;
@@ -78,22 +81,27 @@ public class AudioManager : MonoBehaviour
     // 🎚 Изменение громкости
     public void SetMusicVolume(float volume)
     {
-        musicSource.volume = volume;
+        musicSource.volume = volume * musicVolumeMultiplier;
         PlayerPrefs.SetFloat("MusicVolume", volume);
     }
 
     public void SetSFXVolume(float volume)
     {
-        sfxSource.volume = volume;
+        sfxSource.volume = volume * sfxVolumeMultiplier;
         PlayerPrefs.SetFloat("SFXVolume", volume);
     }
+
 
     // 🏗 Загрузка настроек громкости при запуске
     private void LoadSettings()
     {
-        musicSource.volume = PlayerPrefs.GetFloat("MusicVolume", 1f);
-        sfxSource.volume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        float musicVol = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        float sfxVol = PlayerPrefs.GetFloat("SFXVolume", 1f);
+
+        musicSource.volume = musicVol * musicVolumeMultiplier;
+        sfxSource.volume = sfxVol * sfxVolumeMultiplier;
     }
+
     
     private void OnEnable()
     {
