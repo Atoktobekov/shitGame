@@ -7,7 +7,7 @@ using TMPro;
 public class GemPicker : MonoBehaviour
 {
     private Animator anim;
-    private int gems = 0;
+    public int gems = 0;
     public TMP_Text gemsText;
     private void OnTriggerEnter2D(Collider2D coll)
     {
@@ -18,5 +18,10 @@ public class GemPicker : MonoBehaviour
             gemsText.text = gems.ToString();
             Destroy(coll.gameObject);
         }
+    }
+
+    public int getGems()
+    {
+        return gems;
     }
 }

@@ -5,6 +5,7 @@ public class EndPress : MonoBehaviour
 {
     private Animator anim;
     public bool toSampleScene = false;
+    public GameObject gemPicker;
 
     private void Start()
     {
@@ -17,14 +18,12 @@ public class EndPress : MonoBehaviour
         {   
             AudioManager.instance.PlaySFX("end");
             StartCoroutine(PlayAnimation());
-            if (toSampleScene)
-            {
-                SceneController.instance.loadScene("SampleScene");
-            }
-            else
-            {
-                SceneController.instance.nextLevel();
-            }
+
+            int collected = gemPicker.GetComponent<GemPicker>().getGems();
+            int total = 99;
+            
+            FindObjectOfType<PauseMenu>().ShowFinish(collected, total);
+            other.GetComponent<PlayerController>().SetCanMove(false);
         }
     }
 
