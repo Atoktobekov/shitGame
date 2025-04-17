@@ -9866,10 +9866,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1939585941}
-    - target: {fileID: 350221306975016318, guid: 66ac520018dc73d4b956756714730bdb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: loadMenu
-      objectReference: {fileID: 0}
     - target: {fileID: 907541422370119207, guid: 66ac520018dc73d4b956756714730bdb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9954,18 +9950,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1939585941}
-    - target: {fileID: 2446329424706198441, guid: 66ac520018dc73d4b956756714730bdb, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Resume
-      objectReference: {fileID: 0}
     - target: {fileID: 5766929604773291920, guid: 66ac520018dc73d4b956756714730bdb, type: 3}
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 5766929604773291920, guid: 66ac520018dc73d4b956756714730bdb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 8505499898411688845, guid: 66ac520018dc73d4b956756714730bdb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1939585941}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
