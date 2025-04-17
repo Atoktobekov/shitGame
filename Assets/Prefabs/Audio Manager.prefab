@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.35
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -177,6 +177,7 @@ MonoBehaviour:
   musicSource: {fileID: 7313181376997950622}
   sfxSource: {fileID: 8151779230712202753}
   backgroundMusic: {fileID: 8300000, guid: 268597bbaf8bc1049ab8b2b3ded72f48, type: 3}
+  menuMusic: {fileID: 8300000, guid: 7a7d3375bf974904a878d5069049ad1f, type: 3}
   sounds:
   - name: checkpoint
     clip: {fileID: 8300000, guid: 1591564fb7799fa498f0732fd8c35a63, type: 3}
