@@ -58,13 +58,14 @@ public class AudioManager : MonoBehaviour
     }
 
     // 🎵 Воспроизведение музыки с возможностью смены трека
-    public void PlayMusic(AudioClip music)
+    public void PlayMusic(AudioClip music, bool forceRestart = false)
     {
-        if (musicSource.clip == music) return; // Уже играет этот трек? Не переключаем
+        if (!forceRestart && musicSource.clip == music) return;
 
         musicSource.clip = music;
         musicSource.Play();
     }
+
 
     public void PlaySFX(string soundName)
     {
@@ -118,12 +119,13 @@ public class AudioManager : MonoBehaviour
     {
         if (scene.name == "Menu")
         {
-            PlayMusic(menuMusic);
+            PlayMusic(menuMusic, true); // перезапуск
         }
         else
         {
-            PlayMusic(backgroundMusic);
+            PlayMusic(backgroundMusic, true); // перезапуск
         }
     }
+
 
 }

@@ -42,4 +42,12 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneController.instance.loadScene("Menu");
     }
+    public void RestartLevel()
+    {
+        Time.timeScale = 1f; // На случай, если игра на паузе
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        pauseMenu.SetActive(false);
+        paused = false;
+    }
+    
 }
