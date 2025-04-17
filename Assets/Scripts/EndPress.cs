@@ -4,8 +4,8 @@ using UnityEngine;
 public class EndPress : MonoBehaviour
 {
     private Animator anim;
-    public bool toSampleScene = false;
     public GameObject gemPicker;
+    public int totalGems = 0;
 
     private void Start()
     {
@@ -20,7 +20,7 @@ public class EndPress : MonoBehaviour
             StartCoroutine(PlayAnimation());
 
             int collected = gemPicker.GetComponent<GemPicker>().getGems();
-            int total = 99;
+            int total = totalGems;
             
             FindObjectOfType<PauseMenu>().ShowFinish(collected, total);
             other.GetComponent<PlayerController>().SetCanMove(false);

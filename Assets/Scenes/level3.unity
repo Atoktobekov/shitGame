@@ -15062,10 +15062,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 950589790429375893, guid: 1562c3a1ecd810041a77a9588ed19ecc, type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 3206966069089059417, guid: 1562c3a1ecd810041a77a9588ed19ecc, type: 3}
       propertyPath: m_Name
       value: 'End '
@@ -15074,10 +15070,6 @@ PrefabInstance:
       propertyPath: gemPicker
       value: 
       objectReference: {fileID: 6113074076922997158}
-    - target: {fileID: 4268930245967902569, guid: 1562c3a1ecd810041a77a9588ed19ecc, type: 3}
-      propertyPath: toSampleScene
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7585232229100585940, guid: 1562c3a1ecd810041a77a9588ed19ecc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 63.8

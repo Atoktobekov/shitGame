@@ -17269,6 +17269,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1224172197}
     - target: {fileID: 4268930245967902569, guid: 1562c3a1ecd810041a77a9588ed19ecc, type: 3}
+      propertyPath: totalGems
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268930245967902569, guid: 1562c3a1ecd810041a77a9588ed19ecc, type: 3}
       propertyPath: toSampleScene
       value: 0
       objectReference: {fileID: 0}
