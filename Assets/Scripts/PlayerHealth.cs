@@ -15,11 +15,11 @@ public class PlayerHealth : MonoBehaviour
    private Rigidbody2D rb;   
    private Animator anim;
    public float cameraMoveDuration = 0.5f; // Время плавного возврата камеры
+   public GameObject gameOverPanel;
    
    public CinemachineVirtualCamera virtualCamera; // Cinemachine камера
    
       
-
    void Start()
    {
       player = GetComponent<PlayerController>();
@@ -61,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
       playerCopiesText.text = playerCopies.ToString();
    }
    
-  private IEnumerator Die()
+ /* private IEnumerator Die()
   {
      AudioManager.instance.PlaySFX("die");
      player.SetCanMove(false); 
@@ -83,7 +83,33 @@ public class PlayerHealth : MonoBehaviour
      livesText.text = lives.ToString();
 
      yield return StartCoroutine(Respawn()); 
-  }
+  }*/
+ 
+ private IEnumerator Die()
+ {
+    AudioManager.instance.PlaySFX("die");
+    player.SetCanMove(false); 
+    isDead = true;
+    StartCoroutine(WaitForHitThenDie());
+
+    yield return new WaitForSeconds(0.6f);
+    
+    playerCopies--; 
+    if (playerCopies < 0)
+    {
+       Debug.Log("Game Over");
+       gameOverPanel.SetActive(true); // Показать панель
+       Time.timeScale = 0f; // Остановить игру
+       yield break; 
+    }
+
+    playerCopiesText.text = playerCopies.ToString();
+    lives = 3;
+    livesText.text = lives.ToString();
+
+    yield return StartCoroutine(Respawn()); 
+ }
+
 
   private IEnumerator DieFromCringe()
   {
@@ -98,10 +124,10 @@ public class PlayerHealth : MonoBehaviour
      if (playerCopies < 0)
      {
         Debug.Log("Game Over");
-        Destroy(gameObject);
+        gameOverPanel.SetActive(true); // Показать панель
+        Time.timeScale = 0f; // Остановить игру
         yield break; 
      }
-    
      playerCopiesText.text = playerCopies.ToString();
      lives = 3;
      livesText.text = lives.ToString();
