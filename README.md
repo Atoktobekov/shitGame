@@ -54,17 +54,6 @@
 
 ---
 
-## 🗺️ Планы на будущее
-1. Доделать уровни (6–15)
-
-2. Отладить все баги
-
-3. Добавить настройки
-
-4. Сдать куратору 😄
- 
----
- 
 ## 📬 Обратная связь
 Если есть идеи, баги, или хочешь поддержать проект — пиши!
 - Telegram: dRacula18
@@ -136,17 +125,7 @@ This project was created to help me grow my skills in Unity and C#. I decided to
 - Git			
 - Rider		
 
----
-
-## 🗺️ Future Plans
-1. Finish levels (6–15)
- 
-2. Debug and polish the game
-
-3. Add a settings menu
-
-4. Submit the final version to my course curator 😄
- 
+--- 
  
  ## 📬 Contact
 If you have ideas, found bugs, or just want to connect — feel free to reach out!
