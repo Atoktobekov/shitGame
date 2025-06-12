@@ -3,45 +3,63 @@
 --- !u!159 &1
 EditorSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_SerializationMode: 2
-  m_LineEndingsForNewScripts: 0
-  m_DefaultBehaviorMode: 1
-  m_PrefabRegularEnvironment: {fileID: 0}
-  m_PrefabUIEnvironment: {fileID: 0}
-  m_SpritePackerMode: 5
-  m_SpritePackerCacheSize: 10
-  m_SpritePackerPaddingPower: 1
-  m_Bc7TextureCompressor: 0
-  m_EtcTextureCompressorBehavior: 1
-  m_EtcTextureFastCompressor: 1
-  m_EtcTextureNormalCompressor: 2
-  m_EtcTextureBestCompressor: 4
-  m_ProjectGenerationIncludedExtensions: txt;xml;fnt;cd;asmdef;asmref;rsp
-  m_ProjectGenerationRootNamespace: 
-  m_EnableTextureStreamingInEditMode: 1
-  m_EnableTextureStreamingInPlayMode: 1
-  m_EnableEditorAsyncCPUTextureLoading: 0
-  m_AsyncShaderCompilation: 1
-  m_PrefabModeAllowAutoSave: 1
-  m_EnterPlayModeOptionsEnabled: 1
-  m_EnterPlayModeOptions: 1
-  m_GameObjectNamingDigits: 1
-  m_GameObjectNamingScheme: 0
-  m_AssetNamingUsesSpace: 1
-  m_InspectorUseIMGUIDefaultInspector: 0
-  m_UseLegacyProbeSampleCount: 0
-  m_SerializeInlineMappingsOnOneLine: 1
-  m_DisableCookiesInLightmapper: 1
-  m_AssetPipelineMode: 1
-  m_RefreshImportMode: 0
-  m_CacheServerMode: 0
-  m_CacheServerEndpoint: 
-  m_CacheServerNamespacePrefix: default
-  m_CacheServerEnableDownload: 1
-  m_CacheServerEnableUpload: 1
-  m_CacheServerEnableAuth: 0
-  m_CacheServerEnableTls: 0
-  m_CacheServerValidationMode: 2
-  m_CacheServerDownloadBatchSize: 128
-  m_EnableEnlightenBakedGI: 0
+  serializedVersion: 12                     # Version of the serialization format
+  
+  # General Editor Settings
+  m_SerializationMode: 2                    # Force Text (recommended for version control)
+  m_LineEndingsForNewScripts: 0             # 0=OS Native, 1=Unix, 2=Windows
+  m_DefaultBehaviorMode: 1                  # 0=2D, 1=3D
+  m_PrefabRegularEnvironment: {fileID: 0}   # Default environment for prefabs
+  m_PrefabUIEnvironment: {fileID: 0}        # Default UI environment for prefabs
+  
+  # Sprite Packing Settings
+  m_SpritePackerMode: 5                     # 5=Always Enabled (Build Time), recommended for optimization
+  m_SpritePackerCacheSize: 10               # Cache size in gigabytes
+  m_SpritePackerPaddingPower: 1             # Padding between sprites (1=2px, 2=4px, 3=8px)
+  
+  # Texture Compression Settings
+  m_Bc7TextureCompressor: 0                 # BC7 compression (0=Default)
+  m_EtcTextureCompressorBehavior: 1         # 1=Normal quality
+  m_EtcTextureFastCompressor: 1             # Fast ETC compression level
+  m_EtcTextureNormalCompressor: 2           # Normal ETC compression level
+  m_EtcTextureBestCompressor: 4             # Best quality ETC compression level
+  
+  # Project Generation Settings
+  m_ProjectGenerationIncludedExtensions: txt;xml;fnt;cd;asmdef;asmref;rsp;cs # Added .cs for C# files
+  m_ProjectGenerationRootNamespace: ""      # Empty string means no root namespace
+  
+  # Performance Settings
+  m_EnableTextureStreamingInEditMode: 1     # Enable texture streaming in editor
+  m_EnableTextureStreamingInPlayMode: 1     # Enable texture streaming in play mode
+  m_EnableEditorAsyncCPUTextureLoading: 0   # Async texture loading (suggest 1 for better performance)
+  m_AsyncShaderCompilation: 1              # Enable async shader compilation (recommended)
+  
+  # Workflow Settings
+  m_PrefabModeAllowAutoSave: 1             # Allow auto-saving in prefab mode
+  m_EnterPlayModeOptionsEnabled: 1         # Enable fast enter play mode
+  m_EnterPlayModeOptions: 1                # 1=Reload Domain, could set to 3 for fastest enter time
+  m_GameObjectNamingDigits: 2              # Suggest 2 digits for better organization
+  m_GameObjectNamingScheme: 0              # 0=Space separator
+  m_AssetNamingUsesSpace: 1                # Use spaces in asset names
+  
+  # Editor UI Settings
+  m_InspectorUseIMGUIDefaultInspector: 0    # Use default inspector GUI
+  m_SerializeInlineMappingsOnOneLine: 1     # Compact serialization format
+  
+  # Lighting Settings
+  m_UseLegacyProbeSampleCount: 0            # Use modern probe sampling
+  m_DisableCookiesInLightmapper: 1         # Disable cookies for faster baking
+  m_EnableEnlightenBakedGI: 0              # Disable legacy Enlighten (suggest using Progressive)
+  
+  # Asset Pipeline & Cache Server
+  m_AssetPipelineMode: 1                   # 1=Version 2 (recommended)
+  m_RefreshImportMode: 0                   # 0=On Asset Change (suggest 1 for Out of Process)
+  m_CacheServerMode: 0                     # 0=Local, 1=Remote, 2=Disabled
+  m_CacheServerEndpoint: ""                # Cache server address if enabled
+  m_CacheServerNamespacePrefix: default    # Cache server namespace
+  m_CacheServerEnableDownload: 1           # Enable cache downloads
+  m_CacheServerEnableUpload: 1             # Enable cache uploads
+  m_CacheServerEnableAuth: 0               # Authentication disabled
+  m_CacheServerEnableTls: 0                # TLS disabled
+  m_CacheServerValidationMode: 2           # 2=Ask if invalid
+  m_CacheServerDownloadBatchSize: 128      # Batch size in MB
