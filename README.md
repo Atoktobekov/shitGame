@@ -1,4 +1,4 @@
-﻿# 🎮 Unnamed Platformer
+﻿# 🎮 Blue Bound
 
 > *Учебный 2D платформер на Unity с авторскими механиками. Разрабатывается как курсовой проект и первая полноценная игра.*
 
@@ -45,6 +45,11 @@
 
 ---
 
+## Ссылка на проект: 
+Itch: https://idonthave2live.itch.io/bluebound 
+
+---
+
 
 ## 🛠️ Технологии
 - Unity		
@@ -68,7 +73,8 @@
 
 
 
-# 🎮 Unnamed Platformer
+# 🎮 Blue Bound
+
 
 > *An educational 2D platformer made with Unity and custom gameplay mechanics. Developed as a coursework project and my very first full game.*
 
@@ -115,6 +121,12 @@ This project was created to help me grow my skills in Unity and C#. I decided to
 
 3. Launch the MainMenu or Level1 scene
 
+---
+
+## Link to the Project
+
+Itch: https://idonthave2live.itch.io/bluebound 
+ 
 ---
 
 
