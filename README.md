@@ -1,5 +1,3 @@
-﻿# 🎮 Blue Bound
-
 > *Учебный 2D платформер на Unity с авторскими механиками. Разрабатывается как курсовой проект и первая полноценная игра.*
 
 ---
@@ -34,6 +32,17 @@
   - Активируемые через триггер
 - ✅ **Кружащаяся пила**
 - ✅ **Пила, преследующая игрока**
+
+---
+
+## 📸 Скриншоты 
+
+<p align="center">
+  <img src="screenshots/screenshot  (1).png" width="30%">
+  <img src="screenshots/screenshot  (2).png" width="30%">
+  <img src="screenshots/screenshot  (3).png" width="30%">
+  <img src="screenshots/screenshot  (4).png" width="30%">
+</p>
 
 ---
 
