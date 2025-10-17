@@ -122,6 +122,17 @@ This project was created to help me grow my skills in Unity and C#. I decided to
 
 ---
 
+## 📸 Screenshots 
+
+<p align="center">
+  <img src="screenshots/screenshot  (1).png" width="30%">
+  <img src="screenshots/screenshot  (2).png" width="30%">
+  <img src="screenshots/screenshot  (3).png" width="30%">
+  <img src="screenshots/screenshot  (4).png" width="30%">
+</p>
+
+---
+
 ## 🚀 How to Run the Project
 
 1. git clone https://github.com/Atoktobekov/shitGame.git
