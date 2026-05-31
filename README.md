@@ -162,7 +162,7 @@ Itch: https://idonthave2live.itch.io/bluebound
  ## 📬 Contact
 If you have ideas, found bugs, or just want to connect — feel free to reach out!
 
-- 📲 Telegram: @dRacula18
+- 📲 Telegram: @adi_toktobekov
 
 - 📧 Email: adil_toktobekov@mail.ru
 
